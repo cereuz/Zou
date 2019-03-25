@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.Permission;
+import com.yanzhenjie.permission.runtime.Permission;
 import com.zao.http.DownloadIntentService;
 import com.zao.utils.NotificationUtil;
 import com.zao.utils.ServiceUtil;
