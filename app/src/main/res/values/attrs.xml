@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBar">
+        <attr name="titleText" format="string"/>
+        <attr name="isTitleShow" format="boolean"/>
+        <attr name="titleTextColor" format="color"/>
+        <attr name="isBackButtonShow" format="boolean"/>
+        <attr name="backButtomColor" format="enum">
+            <enum name="black" value="0"/>
+            <enum name="white" value="1"/>
+        </attr>
+        <attr name="isRightImageViewShow" format="boolean"/>
+        <attr name="isRightTextViewShow" format="boolean"/>
+        <attr name="rightImage" format="reference"/>
+        <attr name="rightText" format="string"/>
+        <attr name="logo" format="reference"/>
+    </declare-styleable>
+</resources>
