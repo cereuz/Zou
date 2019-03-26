@@ -27,7 +27,7 @@
                   android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.zao.activity.AboutActivity" />
 
-        <service android:name="com.zao.http.DownloadIntentService"/>
+        <service android:name="com.zao.httpdownload.DownloadIntentService"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

@@ -1,4 +1,4 @@
-package com.zao.http;
+package com.zao.httpdownload;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,6 +1,6 @@
-package com.zao.http;
+package com.zao.httpdownload;
 
-import com.zao.utils.ApkUtils;
+import com.zao.base.ApiService;
 import com.zao.utils.Constant;
 import com.zao.utils.LogZ;
 
@@ -25,13 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitHttp {
     private static final int DEFAULT_TIMEOUT = 10;
-    private static final String TAG = "RetrofitClient";
 
     private ApiService apiService;
 
     private OkHttpClient okHttpClient;
 
-    public static String baseUrl = ApiService.BASE_URL;
+    public static String baseUrl = Constant.BASE_URL;
 
     private static RetrofitHttp sIsntance;
 

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -61,15 +62,19 @@ public class ApkUtils {
         return uri;
     }
 
-    public static void verifyStoragePermissions(Activity activity) {
-        // Check if we have write permission
-        int permission = ActivityCompat.checkSelfPermission(activity,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE);
+    //获取版本号
+    public static int getVersionCode(Context context) {
+        //1.包管理者对象 PackageManager
+        PackageManager pm = context.getPackageManager();
+        //2. 从包的管理者对象中，获取指定包名的基本信息（版本名称，版本号）,flag传0代表获取基本信息
+        try {
+            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(),0);
+//            return packageInfo.versionName + "\n" + packageInfo.packageName;
+            return packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
+        return  0;
     }
 
 }

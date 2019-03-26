@@ -18,13 +18,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zao.base.AppManager;
 import com.zao.base.BaseActivity;
 import com.zao.base.TitleBar;
 import com.zao.utils.AdminUtils;
 import com.zao.utils.LogZ;
 
-import java.util.LinkedList;
 
 /**
  * @author : zw
