@@ -37,7 +37,7 @@ public class DateUtil {
      * @param time
      * @return
      */
-    public String data(String time) {
+    public String date(String time) {
         SimpleDateFormat sdr = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒",
                 Locale.CHINA);
         Date date;

@@ -26,6 +26,7 @@
         <activity android:name=".AdminActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.zao.activity.AboutActivity" />
+        <activity android:name="com.zao.pressure0306.PressureDiagramActivity" />
 
         <service android:name="com.zao.httpdownload.DownloadIntentService"/>
 

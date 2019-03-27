@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         /**
          * 注册EventBus
-         * 需要先注册，然后其他控件发送消息，才能接收到消息。
+         * 需要先注册，然后其他控件发送消息，最后当前控件才能接收到消息。
          */
         EventBus.getDefault().register(this);
     }

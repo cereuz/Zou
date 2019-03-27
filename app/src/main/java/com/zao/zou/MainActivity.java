@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.zao.base.GlobalHandler;
 import com.zao.utils.DateUtil;
-import com.zao.utils.LogZ;
 
 public class MainActivity extends AppCompatActivity implements GlobalHandler.HandleMsgListener{
 

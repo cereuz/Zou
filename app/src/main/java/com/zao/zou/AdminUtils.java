@@ -1,4 +1,4 @@
-package com.zao.utils;
+package com.zao.zou;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.zao.activity.AboutActivity;
+import com.zao.pressure0306.PressureDiagramActivity;
 import com.zao.zou.MainActivity;
 import com.zao.zou.R;
 
@@ -33,8 +34,8 @@ public class AdminUtils {
             return true;
         }  else  if (id == R.id.action_settings) {
             Toast.makeText(context, "设置。。。", Toast.LENGTH_SHORT).show();
- /*			Intent  intent  =  new  Intent(this,SettingActivity.class);
- 			startActivity(intent);*/
+ 			Intent  intent  =  new  Intent(context, PressureDiagramActivity.class);
+ 			context.startActivity(intent);
             return true;
         }  else  if (id == R.id.action_about) {
             Toast.makeText(context, "关于。。。", Toast.LENGTH_SHORT).show();
