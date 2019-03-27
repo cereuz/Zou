@@ -22,6 +22,9 @@ import com.zao.base.BaseActivity;
 import com.zao.base.TitleBar;
 import com.zao.utils.AdminUtils;
 import com.zao.utils.LogZ;
+import com.zao.utils.ToastUtil;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -104,6 +107,40 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initNavHeader(navigationView);
+    }
+
+    /**
+     * 侧滑栏顶部的头像和文字控件
+     */
+    private void initNavHeader(NavigationView navigationView) {
+        View headerView = navigationView.getHeaderView(0);
+        ImageView iv_nav_header = headerView.findViewById(R.id.iv_nav_header);
+        TextView  tv_nav_header_title = headerView.findViewById(R.id.tv_nav_header_title);
+        TextView  tv_nav_header_content = headerView.findViewById(R.id.tv_nav_header_content);
+
+        iv_nav_header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.showT(getApplicationContext(),"IV_NAV_HEADER");
+                closeDrawer();
+            }
+        });
+        tv_nav_header_title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.showT(getApplicationContext(),"TV_NAV_HEADER_TITLE");
+                closeDrawer();
+            }
+        });
+        tv_nav_header_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.showT(getApplicationContext(),"TV_NAV_HEADER_CONTENT");
+                closeDrawer();
+            }
+        });
     }
 
     @Override
@@ -161,9 +198,16 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
 
         }
 
+        closeDrawer();
+        return true;
+    }
+
+    /**
+     * 隐藏抽屉栏
+     */
+    private void closeDrawer() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     /**
