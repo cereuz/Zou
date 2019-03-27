@@ -1,6 +1,7 @@
 package com.zao.pressure0306;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,9 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.zao.event.MessageEvent;
+import com.zao.utils.LogZ;
+import com.zao.utils.ToastUtil;
 import com.zao.zou.AdminUtils;
 import com.zao.utils.DateUtil;
 import com.zao.zou.R;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 
 /**
  * @author : zw
@@ -29,9 +38,13 @@ public class PressureDiagramActivity extends AppCompatActivity {
     private Button btn_pdstart_0130;
     private MyPressureView pb_mypressure_0130;
 
+    String pressureS;
+    String time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogZ.e("好好学习，天天向上");
         setContentView(R.layout.activity_pressurediagram_0306);
 
         btn_pdstart_0130 = (Button)findViewById(R.id.btn_pdstart_0130);
@@ -39,6 +52,24 @@ public class PressureDiagramActivity extends AppCompatActivity {
         pb_pressure_0130 = (ProgressBar) findViewById(R.id.pb_pressure_0130);
         pb_mypressure_0130 = (MyPressureView) findViewById(R.id.pb_mypressure_0130);
         pb_pressure_0130.setMax(pb_max_0130);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LogZ.e("好好学习，天天向上");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LogZ.e("好好学习，天天向上");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        LogZ.e("好好学习，天天向上");
     }
 
     public  void  startOrStop(View view){
@@ -57,7 +88,7 @@ public class PressureDiagramActivity extends AppCompatActivity {
         }
     }
 
-/*    public  void  start(View view){
+/* public  void  start(View view){
         Toast.makeText(this, "start", Toast.LENGTH_SHORT).show();
         //C方法运行在主线程，主线程不能做耗时操作。不然会堵塞
         new  Thread(){
@@ -78,9 +109,13 @@ public class PressureDiagramActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                et_pressure_0130.setText(String.valueOf(pressure)+" || "+ DateUtil.getTodayDateTime());
+                pressureS = String.valueOf(pressure);
+                time = DateUtil.getTodayDateTime();
+                et_pressure_0130.setText(pressureS + " || " + time);
             }
         });
+
+        EventBus.getDefault().post(new MessageEvent(pressureS, "蜗牛",time));
     }
 
     //模拟开启，模拟停止
@@ -103,7 +138,6 @@ public class PressureDiagramActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         AdminUtils.AdminMenu(PressureDiagramActivity.this, item);
         return super.onOptionsItemSelected(item);
     }

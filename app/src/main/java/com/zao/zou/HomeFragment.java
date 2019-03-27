@@ -8,6 +8,7 @@ import com.zao.base.BaseFragment;
 import com.zao.event.MessageEvent;
 import com.zao.utils.DateUtil;
 import com.zao.utils.LogZ;
+import com.zao.utils.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -37,10 +38,10 @@ public class HomeFragment extends BaseFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN) //这个必须存在,不然程序会崩溃
     public void onEventZou(MessageEvent event) {
-        String[] strings = event.getStringArray();
-        for (String s : strings){
-            LogZ.e(s);
-        }
+            String strings = event.toString();
+            LogZ.e(strings);
+            ToastUtil.showT(mContext,"接收到EventBus从其他控件post的消息：" + strings);
+
     }
 
     @Override
@@ -51,6 +52,7 @@ public class HomeFragment extends BaseFragment {
          * 需要先注册，然后其他控件发送消息，最后当前控件才能接收到消息。
          */
         EventBus.getDefault().register(this);
+        ToastUtil.showT(mContext,"注册EventBus");
     }
 
     @Override

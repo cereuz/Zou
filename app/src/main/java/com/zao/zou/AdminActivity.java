@@ -1,5 +1,6 @@
 package com.zao.zou;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -61,6 +62,21 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_admin);
         initDrawer();
         initTab();
+    }
+
+    /**
+     * 在fragment所在的FragmentActivity中，重写onSaveInstanceState方法，但是不做实现，将super.onSaveInstanceState(outState)注释掉。
+     *
+     * 原理分析：
+     *
+     * 当前APP崩溃后首页重启或者从后台再次回到这个app的时候，通过onCreate中的参数savedInstanceState恢复了之前的fragment。
+     * 此时的FragmentTransaction中的相当于又再次add了fragment进去的，之前保存的fragment也还在。
+     * hide()和show()方法对之前保存的fragment已经失效了。所以出现了重叠的现象。
+     */
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //super.onSaveInstanceState(outState);
     }
 
     /**

@@ -1,17 +1,13 @@
 package com.zao.zou;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
-
 import com.zao.base.BaseFragment;
 import com.zao.event.MessageEvent;
 import com.zao.utils.DateUtil;
 import com.zao.utils.LogZ;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author : zw
