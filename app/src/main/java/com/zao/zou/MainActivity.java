@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements GlobalHandler.Han
         tv = (TextView)findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());  //获取从C++传来的数据，并显示
 
-
     }
 
     @Override
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements GlobalHandler.Han
         switch (msg.what){
             case 0:
                 tv.setText(DateUtil.getTodayDateHello() + "\n\t\t\t\t\t" + mHandler.countDown(0,1000));
-                LogZ.e(DateUtil.getTodayDateTime());
                 break;
             case 1:
                 startActivity(new Intent(MainActivity.this,AdminActivity.class));

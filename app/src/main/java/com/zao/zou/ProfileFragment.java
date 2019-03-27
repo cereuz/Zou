@@ -1,11 +1,17 @@
 package com.zao.zou;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.zao.base.BaseFragment;
+import com.zao.event.MessageEvent;
 import com.zao.utils.DateUtil;
 import com.zao.utils.LogZ;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author : zw
@@ -27,5 +33,14 @@ public class ProfileFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_onezao_profile0306;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        EventBus.getDefault().post(new MessageEvent("1", "蜗牛","snail"));
+        EventBus.getDefault().post(new MessageEvent("2", "葡萄","grape"));
+        EventBus.getDefault().post(new MessageEvent("3", "天空","sky"));
+        EventBus.getDefault().post(new MessageEvent("4", "大地","land"));
     }
 }
