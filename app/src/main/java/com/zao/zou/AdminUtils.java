@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import com.zao.activity.AboutActivity;
 import com.zao.pressure0306.PressureDiagramActivity;
-import com.zao.zou.MainActivity;
-import com.zao.zou.R;
 
 /**
  * @author : zw
@@ -25,14 +23,14 @@ public class AdminUtils {
  /*			Intent  intent  =  new  Intent(this,WritediaryActivity.class);
  			startActivity(intent);*/
             return true;
-        }  else  if (id == R.id.action_query) {
+        }  else  if (id == R.id.action_start) {
             Toast.makeText(context, "查询。。。", Toast.LENGTH_SHORT).show();
 /* 			Intent  intent  =  new Intent(context,TestMeActivity.class);
  			context.startActivity(intent);*/
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
             return true;
-        }  else  if (id == R.id.action_settings) {
+        }  else  if (id == R.id.action_pressure) {
             Toast.makeText(context, "设置。。。", Toast.LENGTH_SHORT).show();
  			Intent  intent  =  new  Intent(context, PressureDiagramActivity.class);
  			context.startActivity(intent);

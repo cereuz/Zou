@@ -14,13 +14,13 @@
         app:showAsAction="never"
         android:title="@string/action_diary"/>
     <item
-        android:id="@+id/action_query"
+        android:id="@+id/action_start"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="@string/action_start"/>
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_pressure"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:icon="@drawable/ic_menu_send"

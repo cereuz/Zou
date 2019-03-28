@@ -3,7 +3,6 @@ package com.zao.zou;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -56,6 +55,8 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
     private StatusFragment   statusFragment;
     private GroupFragment   groupFragment;
     private ProfileFragment   profileFragment;
+
+    private boolean mIsEditStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -238,6 +239,20 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
         }
     }
 
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        LogZ.e("Fragment切换了，Menu菜单切换");
+        if (mIsEditStatus) {
+            menu.findItem(R.id.action_start).setVisible(false);
+            menu.findItem(R.id.action_pressure).setVisible(true);
+        } else {
+            menu.findItem(R.id.action_start).setVisible(true);
+            menu.findItem(R.id.action_pressure).setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     /**
      *  加载顶部右侧菜单，添加菜单的点击事件。
      */
@@ -264,6 +279,12 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
 
         switch (view.getId()){
             case R.id.rl_home :
+                /**
+                 * 随着Fragment的切换，重新绘制Toolbar的menu
+                 */
+                mIsEditStatus = false;
+                invalidateOptionsMenu();
+
                 initHomeFragment();
                 break;
 
@@ -300,6 +321,12 @@ public class AdminActivity extends BaseActivity implements NavigationView.OnNavi
                 break;
 
             case R.id.rl_profile :
+                /**
+                 * 随着Fragment的切换，重新绘制Toolbar的menu
+                 */
+                mIsEditStatus = true;
+                invalidateOptionsMenu();
+
                 //将四个的图片全部设置为未点击状态。
                 hideFragment(transaction);
                 clearIcon();
