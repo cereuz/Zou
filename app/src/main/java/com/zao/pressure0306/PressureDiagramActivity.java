@@ -1,7 +1,6 @@
 package com.zao.pressure0306;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,14 +11,11 @@ import android.widget.ProgressBar;
 
 import com.zao.event.MessageEvent;
 import com.zao.utils.LogZ;
-import com.zao.utils.ToastUtil;
 import com.zao.zou.AdminUtils;
 import com.zao.utils.DateUtil;
 import com.zao.zou.R;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 
 /**
@@ -40,6 +36,9 @@ public class PressureDiagramActivity extends AppCompatActivity {
 
     String pressureS;
     String time;
+
+    private MyThread myThread;
+    private boolean stop = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +62,8 @@ public class PressureDiagramActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        stopMonitor();
+        myThread.close();
         LogZ.e("好好学习，天天向上");
     }
 
@@ -76,17 +77,41 @@ public class PressureDiagramActivity extends AppCompatActivity {
         String btn_text = btn_pdstart_0130.getText().toString().trim();
         if(btn_text.equals("Start")|| btn_text.equals("开始")){
             btn_pdstart_0130.setText("Stop");
-            //C方法运行在主线程，主线程不能做耗时操作。不然会堵塞
-            new  Thread(){
+
+            myThread = new MyThread();
+            myThread.start();
+
+/*            new  Thread(){
                 public void run(){
                     startMonitor();
                 }
-            }.start();
+            }.start();*/
         } else if (btn_text.equals("Stop")||btn_text.equals("结束")){
             stopMonitor();
             btn_pdstart_0130.setText("Start");
         }
     }
+
+    /**
+     * C方法运行在主线程，主线程不能做耗时操作。不然会堵塞
+     * 控制线程的创建和关闭
+     */
+    private class MyThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            while (!stop) {
+                    startMonitor();
+                    LogZ.e("线程正在运行中");
+               }
+        }
+
+        public void close() {
+            stop = true;
+            LogZ.e("线程取消----" + DateUtil.getTodayDateTime());
+        }
+    }
+
 
 /* public  void  start(View view){
         Toast.makeText(this, "start", Toast.LENGTH_SHORT).show();
@@ -121,8 +146,6 @@ public class PressureDiagramActivity extends AppCompatActivity {
     //模拟开启，模拟停止
     public  native void  startMonitor();
     public  native void  stopMonitor();
-
-
 
     //加载顶部菜单，添加菜单的点击事件。
     @Override
