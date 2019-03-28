@@ -5,34 +5,58 @@
     <item android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search"
         android:title="@string/action_diary"
-        app:showAsAction="ifRoom" />
-
-    <item android:id="@+id/action_search2"
-        android:icon="@drawable/ic_action_search"
-        android:title="@string/app_name"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_diary"
+        android:icon="@drawable/ic_menu_camera"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="@string/action_diary"/>
-
     <item
         android:id="@+id/action_query"
         android:orderInCategory="100"
         app:showAsAction="never"
-        android:title="@string/action_query"/>
+        android:title="@string/action_start"/>
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:icon="@drawable/ic_menu_send"
+        android:title="@string/action_pressure"/>
 
     <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="@string/action_about"/>
+
+    <item
+        android:id="@+id/action_diary2"
+        android:icon="@drawable/ic_menu_camera"
+        android:orderInCategory="101"
+        app:showAsAction="never"
+        android:title="@string/action_more">
+        <menu>
+            <item
+                android:id="@+id/action_query2"
+                android:orderInCategory="101"
+                app:showAsAction="never"
+                android:title="@string/action_query"/>
+
+            <item
+                android:id="@+id/action_settings2"
+                android:orderInCategory="101"
+                app:showAsAction="never"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/action_settings"/>
+
+            <item
+                android:id="@+id/action_about2"
+                android:orderInCategory="101"
+                app:showAsAction="never"
+                android:title="@string/action_about"/>
+        </menu>
+    </item>
 </menu>

@@ -10,6 +10,9 @@
     <string name="action_query">查询</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
+    <string name="action_more">更多</string>
+    <string name="action_pressure">压力</string>
+    <string name="action_start">启动</string>
 
     <string name="start">开始</string>
     <string name="stop">结束</string>

@@ -52,7 +52,7 @@ public class AdminUtils {
         }  else  if (id ==  R.id.action_search) {
             Toast.makeText(context, "搜索一下，onezao，去除重复", Toast.LENGTH_SHORT).show();
             return true;
-        }  else  if (id ==  R.id.action_search2) {
+        }  else  if (id ==  R.id.action_search) {
             Toast.makeText(context, "自动添加测试数据", Toast.LENGTH_SHORT).show();
             return true;
         }

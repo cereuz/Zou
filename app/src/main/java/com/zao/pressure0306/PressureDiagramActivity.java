@@ -63,7 +63,9 @@ public class PressureDiagramActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         stopMonitor();
-        myThread.close();
+        if(myThread !=  null){
+            myThread.close();
+        }
         LogZ.e("好好学习，天天向上");
     }
 
