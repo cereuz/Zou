@@ -28,5 +28,7 @@
     <string name="nav_header_subtitle">zsky@live.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
+    <string name="toGrid">Grid</string>
+
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>
