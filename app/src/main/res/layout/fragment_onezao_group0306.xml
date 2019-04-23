@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/et_uber_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="http://192.168.60.24:8080/zou0306/TestJsonUber"/>
     <Button
         android:id="@+id/btn_recycle"
         android:layout_width="wrap_content"

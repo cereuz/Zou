@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.zao.MyPicAdapter;
@@ -35,11 +36,14 @@ public class GroupFragment extends BaseFragment {
 
     private Button btnMain;
     private RecyclerView mRecyclerView;
+    EditText et_uber_url;
     private MyPicAdapter mMyAdapter;
     private Context context;
     View mView;
+    String mUrl;
 
     public static final MediaType JSON= MediaType.parse("application/json; charset=utf-8");
+    //"http://192.168.60.23:8080/zou0306/TestJsonUber"
 
     @Override
     protected void doOnCreate(View baseView, Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class GroupFragment extends BaseFragment {
 
     private void initView(View view) {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_main);
+        et_uber_url = view.findViewById(R.id.et_uber_url);
 
         String[] data = {this.getResources().getString(R.string.toGrid),"Zou","Zneo","Uber","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky",
                 "Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky","Zneo","Zsky",
@@ -117,6 +122,7 @@ public class GroupFragment extends BaseFragment {
      *  网络请求，并传递数据
      */
     private void initUber() {
+        mUrl = et_uber_url.getText().toString().trim();
         //开启一个线程，做联网操作
         new Thread() {
             @Override
@@ -126,6 +132,9 @@ public class GroupFragment extends BaseFragment {
         }.start();
     }
 
+    /**
+     * 发送带参数的请求到服务器端
+     */
     private void postParams() {
         //创建一个OkHttpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -138,7 +147,7 @@ public class GroupFragment extends BaseFragment {
                 .build();
         //构建一个请求对象
         Request request = new Request.Builder()
-                .url("http://192.168.60.23:8080/zou0306/TestJsonUber")
+                .url(mUrl)
                 .post(requestBody)
                 .build();
         //发送请求获取响应
