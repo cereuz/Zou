@@ -6,8 +6,6 @@ import android.os.Message;
 import com.zao.utils.DateUtil;
 import com.zao.utils.LogZ;
 
-import java.util.Date;
-
 /**
  * @author : zw
  * @email : zsky@live.com

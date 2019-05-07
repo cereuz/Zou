@@ -79,7 +79,7 @@ public class PressureDiagramActivity extends AppCompatActivity {
         String btn_text = btn_pdstart_0130.getText().toString().trim();
         if(btn_text.equals("Start")|| btn_text.equals("开始")){
             btn_pdstart_0130.setText("Stop");
-
+            stop = false;
             myThread = new MyThread();
             myThread.start();
 
@@ -90,6 +90,7 @@ public class PressureDiagramActivity extends AppCompatActivity {
             }.start();*/
         } else if (btn_text.equals("Stop")||btn_text.equals("结束")){
             stopMonitor();
+            myThread.close();
             btn_pdstart_0130.setText("Start");
         }
     }
